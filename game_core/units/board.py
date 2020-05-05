@@ -1,15 +1,10 @@
 #!/usr/bin/env python
 
 
-BLANK_AXIAL_BOARD = [[0, 0, None, None, None],
-                     [0, 0, 0, 0, None],
+BLANK_AXIAL_BOARD = [[None, None, 0, 0, 0],
                      [None, 0, 0, 0, 0],
-                     [None, None, 0, 0, 0]]
-
-BLANK_AXIAL_BOARD = [[0, 0, None, None, None],
                      [0, 0, 0, 0, None],
-                     [None, 0, 0, 0, 0],
-                     [None, None, 0, 0, 0]]
+                     [0, 0, 0, None, None]]
 
 
 class Axial(object):
@@ -18,14 +13,17 @@ class Axial(object):
         self.r = r
 
     def to_cube(self):
-        z = -self.q - self.r
-        return Cube(self.q, self.r, z)
+        y = -self.q - self.r
+        return Cube(self.q, y, self.r)
     
     def to_dict(self):
         return {"q": self.q, "r": self.r}
     
+    def to_tuple(self):
+        return (self.q, self.r)
+    
     def __str__(self):
-        return str(self.to_dict())
+        return str(self.to_tuple())
 
 
 class Cube(object):
@@ -40,10 +38,10 @@ class Cube(object):
     def to_dict(self):
         return {"x": self.x, "y": self.y, "z": self.z}
     
+    def to_tuple(self):
+        return (self.x, self.y, self.z)
+    
     def __str__(self):
-        return str(self.to_dict())
+        return str(self.to_tuple())
 
-
-
-class Board(object):
 
