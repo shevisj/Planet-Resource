@@ -1,2 +1,3 @@
 from .planet import Planet
-from .board import Axial
+from .coordinates import Axial, Cube
+from .board import *

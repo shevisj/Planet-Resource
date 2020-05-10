@@ -1,47 +1,57 @@
 #!/usr/bin/env python
 
+from numpy import array
 
-BLANK_AXIAL_BOARD = [[None, None, 0, 0, 0],
-                     [None, 0, 0, 0, 0],
-                     [0, 0, 0, 0, None],
-                     [0, 0, 0, None, None]]
+from . import Axial, Cube
+
+BLANK_LINEAR_BOARD = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+BLANK_AXIAL_BOARD = array([[None, None, 0, 0, 0],
+                           [None, 0, 0, 0, 0],
+                           [0, 0, 0, 0, None],
+                           [0, 0, 0, None, None]])
+
+BLANK_CUBE_BOARD = array([[[None, None, None, None, None],
+                           [None, None, None, None, None],
+                           [None, None, None, None, None],
+                           [None, None, None, None, 0],
+                           [None, None, None, 0, None],
+                           [None, None, 0, None, None],
+                           [None, None, None, None, None]],
+                           [[None, None, None, None, None],
+                           [None, None, None, None, None],
+                           [None, None, None, None, 0],
+                           [None, None, None, 0, None],
+                           [None, None, 0, None, None],
+                           [None, 0, None, None, None],
+                           [None, None, None, None, None]],
+                           [[None, None, None, None, None],
+                           [None, None, None, None, None],
+                           [None, None, None, 0, None],
+                           [None, None, 0, None, None],
+                           [None, 0, None, None, None],
+                           [0, None, None, None, None],
+                           [None, None, None, None, None]],
+                           [[None, None, None, None, None],
+                           [None, None, None, None, None],
+                           [None, None, 0, None, None],
+                           [None, 0, None, None, None],
+                           [0, None, None, None, None],
+                           [None, None, None, None, None],
+                           [None, None, None, None, None]]])
 
 
-class Axial(object):
-    def __init__(self, q, r):
-        self.q = q
-        self.r = r
+LINEAR_TO_AXIAL_MAP = array([Axial(q, r)
+                             for r, row in enumerate(BLANK_AXIAL_BOARD.T)
+                             for q, element in enumerate(row)
+                             if element is not None])
 
-    def to_cube(self):
-        y = -self.q - self.r
-        return Cube(self.q, y, self.r)
-    
-    def to_dict(self):
-        return {"q": self.q, "r": self.r}
-    
-    def to_tuple(self):
-        return (self.q, self.r)
-    
-    def __str__(self):
-        return str(self.to_tuple())
+LINEAR_TO_CUBE_MAP = [axial.to_cube() for axial in LINEAR_TO_AXIAL_MAP]
 
 
-class Cube(object):
-    def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
-
-    def to_axial(self):
-        return Hex(self.x, self.z)
-    
-    def to_dict(self):
-        return {"x": self.x, "y": self.y, "z": self.z}
-    
-    def to_tuple(self):
-        return (self.x, self.y, self.z)
-    
-    def __str__(self):
-        return str(self.to_tuple())
+class Board(object):
+    def __init__(self, coordinates_type=Axial, state=BLANK_AXIAL_BOARD):
+        self.coordinates_type = coordinates_type
+        self.state = state
 
 
