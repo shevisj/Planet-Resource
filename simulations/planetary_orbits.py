@@ -1,4 +1,4 @@
-from ..game_core.units import Planet
+from ..game.units import Planet
 
 solar_system = [0]*12
 planets = [

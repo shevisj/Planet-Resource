@@ -1,4 +1,4 @@
 .PHONY: test
 
 test:
-	./run_tests.sh
+	@python3 -m "nose" --verbose ./game/tests/*

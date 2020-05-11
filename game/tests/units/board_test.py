@@ -1,4 +1,4 @@
-from ...units.board import Axial
+from game.units.board import Axial
 from unittest import TestCase
 
 AXIAL_TO_CUBE = [[None, None, (0, -2, 2), (0, -3, 3), (0, -4, 4)], 

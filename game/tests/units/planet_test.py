@@ -1,4 +1,4 @@
-from ...units.planet import Planet
+from game.units.planet import Planet
 from unittest import TestCase
 
 class PlanetTest(TestCase):
