@@ -10,7 +10,7 @@ class SolarSystem(CoreObject):
         self.planets = planets
 
     def add_planet(self, planet: Planet):
-        planet.solar_system_size = self.size
+        planet.solar_system = self
         self.planets[planet.name] = planet
 
     def remove_planet(self, planet_name: str):
