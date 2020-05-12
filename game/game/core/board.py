@@ -3,7 +3,8 @@
 from numpy import array, vectorize, where, ndenumerate, int8
 from copy import deepcopy
 
-from . import Axial, Cube
+from .object import CoreObject
+from .coordinates import Axial, Cube
 
 BLANK_LINEAR_BOARD = array([0]*14)
 
@@ -36,8 +37,9 @@ for i, c in enumerate(LINEAR_TO_CUBE_MAP):
     CUBE_TO_LINEAR_MAP[c.x][c.y][c.z] = i
 
 
-class Board(object):
+class Board(CoreObject):
     def __init__(self, coordinates_type=Axial, state=BLANK_AXIAL_BOARD):
+        super().__init__()
         self.coordinates_type = coordinates_type
         self.state = state
 

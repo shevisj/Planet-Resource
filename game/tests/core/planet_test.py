@@ -1,4 +1,4 @@
-from game.units.planet import Planet
+from game.core.planet import Planet
 from unittest import TestCase
 
 class PlanetTest(TestCase):
@@ -7,4 +7,4 @@ class PlanetTest(TestCase):
 
     def test_increment_orbit_adds_rate_to_position(self):
         self.planet.increment_orbit()
-        self.assertEqual(self.planet.current_pos, 5)
+        self.assertEqual(self.planet.position, 5)

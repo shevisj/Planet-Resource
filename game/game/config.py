@@ -1,0 +1,6 @@
+# ============== UNIT CONFIG ==============
+COMBAT_ATTACK = 5
+COMBAT_DEFENSE = 5
+
+WORKER_ATTACK = 1
+WORKER_DEFENSE = 1

@@ -1,4 +1,7 @@
-.PHONY: test
+.PHONY: test, run-sims
 
 test:
-	@python3 -m "nose" --verbose ./game/tests/*
+	@python3.7 -m "nose" --verbose ./game/tests/*
+
+run-sims:
+	@python3.7 ./simulations/*.py
