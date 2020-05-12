@@ -38,9 +38,8 @@ for i, c in enumerate(LINEAR_TO_CUBE_MAP):
 
 
 class Board(CoreObject):
-    def __init__(self, coordinates_type=Axial, state=BLANK_AXIAL_BOARD):
+    def __init__(self, state=BLANK_LINEAR_BOARD):
         super().__init__()
-        self.coordinates_type = coordinates_type
-        self.state = state
+        self.state = array(state)
 
 

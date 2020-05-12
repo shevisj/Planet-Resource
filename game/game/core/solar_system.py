@@ -9,6 +9,12 @@ class SolarSystem(CoreObject):
         self.size = size
         self.planets = planets
 
+    def create_planet(self, 
+                      name='Planet Name',
+                      **kwargs):
+        kwargs['solar_system'] = self
+        self.planets[name] = Planet(name, **kwargs)
+
     def add_planet(self, planet: Planet):
         planet.solar_system = self
         self.planets[planet.name] = planet

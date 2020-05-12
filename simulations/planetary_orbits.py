@@ -1,5 +1,4 @@
-from game.core import Planet
-from game.core.solar_system import SolarSystem
+from game.core import SolarSystem
 from itertools import combinations
 from string import ascii_uppercase
 from tqdm import tqdm
@@ -40,8 +39,7 @@ seed(RANDOM_SEED)
 ss = SolarSystem(size=SOLAR_SYSTEM_SIZE)
 planet_names = list(ascii_uppercase)[:N_PLANETS]
 for i, n in enumerate(planet_names):
-    p = Planet(name=n, rate=i+1, initial_position=randint(0, SOLAR_SYSTEM_SIZE-1))
-    ss.add_planet(p)
+    ss.create_planet(n, rate=i+1, initial_position=randint(0, SOLAR_SYSTEM_SIZE-1))
 
 overall_ctr = 0
 overall_distance = 0

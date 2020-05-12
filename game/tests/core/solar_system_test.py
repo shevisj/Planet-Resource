@@ -1,5 +1,4 @@
-from game.core.planet import Planet
-from game.core.solar_system import SolarSystem
+from game.core import Planet, SolarSystem
 from unittest import TestCase
 
 class SolarSystemTest(TestCase):
@@ -7,7 +6,7 @@ class SolarSystemTest(TestCase):
         self.planet_names = ['a', 'b', 'c', 'd', 'e', 'f']
         self.solar_system = SolarSystem(size=12)
         for i, n in enumerate(self.planet_names):
-            self.solar_system.add_planet(Planet(n, rate=i+1))
+            self.solar_system.create_planet(n, rate=i+1)
 
     def test_increment_orbits_adds_rate_to_positions(self):
         self.solar_system.increment_orbits()

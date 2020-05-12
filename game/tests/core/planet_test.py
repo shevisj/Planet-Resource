@@ -1,5 +1,4 @@
-from game.core.planet import Planet
-from game.core.solar_system import SolarSystem
+from game.core import Planet, SolarSystem
 from unittest import TestCase
 
 class PlanetTest(TestCase):

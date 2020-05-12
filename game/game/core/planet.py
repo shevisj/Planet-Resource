@@ -2,7 +2,7 @@ from .object import CoreObject
 
 class Planet(CoreObject):
     def __init__(self,
-                 name='Planet Name',
+                 name,
                  initial_position=0,
                  rate=1,
                  solar_system=None,
