@@ -1,12 +1,19 @@
-from ..core import CoreObject
+from .game_object import GameObject
+from .board import Board, Hex
+from .planet import Planet
 
-class BaseUnit(CoreObject):
-    def __init__(self, attack, defense):
-        super().__init__()
+class Unit(GameObject):
+    def __init__(self, attack, defense, location = {}):
         self.attack = attack
         self.defense = defense
+        self.location = {
+            Hex: None,
+            Board: None,
+            Planet: None,
+        }
+        super().__init__()
 
-    def battle(self, enemy: CoreObject):
+    def battle(self, enemy: GameObject):
         if self.attack >= enemy.defense and self.defense > enemy.attack:
             # Victory: enemy died, I survived
             return 1

@@ -1,32 +1,35 @@
-from .object import CoreObject
+from .game_object import GameObject
 from .planet import Planet
+from .faction import Faction
 
-class SolarSystem(CoreObject):
+class SolarSystem(GameObject):
     def __init__(self,
-                 size=12,
+                 size=13,
                  planets={}):
-        super().__init__()
         self.size = size
         self.planets = planets
+        super().__init__()
 
     def create_planet(self, 
-                      name='Planet Name',
+                      identifier: str,
                       **kwargs):
         kwargs['solar_system'] = self
-        self.planets[name] = Planet(name, **kwargs)
+        planet = Planet(identifier, **kwargs)
+        self.planets[planet.uuid] = planet
+        return planet.uuid
 
     def add_planet(self, planet: Planet):
         planet.solar_system = self
-        self.planets[planet.name] = planet
+        self.planets[planet.uuid] = planet
 
-    def remove_planet(self, planet_name: str):
-        if planet_name not in self.planets:
+    def remove_planet(self, identifier: str):
+        if identifier not in self.planets:
             return False
-        del self.planets[planet_name]
+        del self.planets[identifier]
         return True
 
     def orbital_state(self):
-        return {p.name: p.position for p in self.planets.values()}
+        return {str(p.faction): p.position for p in self.planets.values()}
 
     def increment_orbits(self, n=1):
         for p in self.planets.values():
@@ -38,9 +41,9 @@ class SolarSystem(CoreObject):
             p.decrement_orbit(n)
         return self.orbital_state()
 
-    def distance_between(self, planet_name_a: str, planet_name_b: str):
-        if planet_name_a not in self.planets:
-            raise Exception(f"{planet_name_a} does not exist in this solar system")
-        elif planet_name_b not in self.planets:
-            raise Exception(f"{planet_name_b} does not exist in this solar system")
-        return self.planets[planet_name_a].distance_from(self.planets[planet_name_b].position)
+    def distance_between(self, planet_id_a: str, planet_id_b: str):
+        if planet_id_a not in self.planets:
+            raise Exception(f"{planet_id_a} does not exist in this solar system")
+        elif planet_id_b not in self.planets:
+            raise Exception(f"{planet_id_b} does not exist in this solar system")
+        return self.planets[planet_id_a].distance_from(self.planets[planet_id_b].position)

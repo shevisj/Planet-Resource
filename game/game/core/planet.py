@@ -1,19 +1,20 @@
-from .object import CoreObject
+from .game_object import GameObject
 
-class Planet(CoreObject):
+class Planet(GameObject):
     def __init__(self,
-                 name,
+                 faction,
                  initial_position=0,
                  rate=1,
                  solar_system=None,
                  board=None):
-        super().__init__()
-        self.name = name
+        self.faction = faction
         self.initial_position = initial_position
         self.position = initial_position
         self.rate = rate
-        self.solar_system = solar_system
         self.board = board
+        self.solar_system = solar_system
+        super().__init__()
+
 
     def increment_orbit(self, n=1):
         self.position = (self.position + (self.rate * n)) % self.solar_system.size
