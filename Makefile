@@ -1,12 +1,19 @@
-.PHONY: install, test, run-sims
-
-install:
-	@pip3.7 install -e ./game
+.PHONY: activate, deactivate, install, test, run-sims
 
 TESTFILE="*"
-test:
-	@python3.7 -m "nose" --verbose ./game/tests/`echo $(TESTFILE)`
-
 SIM="*"
-run-sims:
-	@python3.7 ./simulations/run_sims.py $(SIM)
+PYENV_VERSION="3.8.2"
+
+install:
+	@./install.sh $(PYENV_VERSION);
+
+build:
+	@pyenv local game-${PYENV_VERSION}; \
+		pip install --upgrade pip; \
+		pip install -e ./game;
+
+test:
+	@nosetests --verbose ./game/tests/`echo $(TESTFILE)`;
+
+run-sims: build
+	python ./simulations/run_sims.py $(SIM)
