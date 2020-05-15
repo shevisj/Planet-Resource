@@ -3,13 +3,13 @@ from .game_object import GameObject
 
 class Axial(GameObject):
     def __init__(self, q: int, r: int):
+        super().__init__()
         self.q = q
         self.r = r
         self.__dict__ = {
             'q': self.q,
             'r': self.r,
         }
-        super().__init__()
 
     def to_cube(self):
         y = -self.q - self.r
@@ -28,6 +28,7 @@ class Axial(GameObject):
 
 class Cube(GameObject):
     def __init__(self, x: int, y: int, z: int):
+        super().__init__()
         self.x = x
         self.y = y
         self.z = z
@@ -36,7 +37,6 @@ class Cube(GameObject):
             'y': self.y,
             'z': self.z,
         }
-        super().__init__()
 
     def to_axial(self):
         return Axial(self.x, self.z)

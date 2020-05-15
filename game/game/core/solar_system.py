@@ -6,9 +6,9 @@ class SolarSystem(GameObject):
     def __init__(self,
                  size=13,
                  planets={}):
+        super().__init__()
         self.size = size
         self.planets = planets
-        super().__init__()
 
     def create_planet(self, 
                       identifier: str,

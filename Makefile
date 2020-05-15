@@ -7,6 +7,6 @@ TESTFILE="*"
 test:
 	@python3.7 -m "nose" --verbose ./game/tests/`echo $(TESTFILE)`
 
-SIMFILES="*"
+SIM="*"
 run-sims:
-	@python3.7 ./simulations/`echo $(SIMFILES)`
+	@python3.7 ./simulations/run_sims.py $(SIM)

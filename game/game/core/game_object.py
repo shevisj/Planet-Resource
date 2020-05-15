@@ -6,8 +6,8 @@ jsonpickle_numpy.register_handlers()
 
 class GameObject(object):
     def __init__(self):
-        self.uuid = uuid4().hex
         super().__init__()
+        self.uuid = uuid4().hex
 
     @classmethod
     def deserialize(cls, obj):

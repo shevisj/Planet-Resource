@@ -20,9 +20,9 @@ make install
 
 ## Running Simulations
 
-Run `make run-sims` to run all simulations. Optionally include `SIMFILES` to run a specific simulation.
+Run `make run-sims` to run all simulations. Optionally include `SIM` to run a specific simulation.
 
 
 ## Testing
 
-Run `make test`.
+Run `make test`. Optionally include `TESTFILE` to run a specific test.
