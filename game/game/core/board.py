@@ -26,6 +26,20 @@ BOARD_DISPLAY = """
      \ / \ / 
 """
 
+BOARD_DISPLAY_WIDE = """
+          /   \   /   \ 
+        |   {}   |   {}   |
+      /   \   /   \   /   \ 
+    |   {}   |   {}   |   {}   |
+  /   \   /   \   /   \   /   \ 
+|   {}   |   {}   |   {}   |   {}   |
+  \   /   \   /   \   /   \   /
+    |   {}   |   {}   |   {}   |
+      \   /   \   /   \   / 
+        |   {}   |   {}   |
+          \   /   \   / 
+"""
+
 DEFAULT_RESOURCE_ALLOCATION = array([Resource]*14)
 
 # See more about hexagonal grids here: https://www.redblobgames.com/grids/hexagons/
@@ -119,7 +133,7 @@ class Board(GameObject):
                 values.append(list(i.units.values())[0].symbol if len(i.units) > 0 else ' ')
             else:
                 values.append('?')
-        output = BOARD_DISPLAY.format(*values)
+        output = BOARD_DISPLAY_WIDE.format(*values)
         if as_str:
             return output
         print(output)

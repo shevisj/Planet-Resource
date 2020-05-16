@@ -3,17 +3,19 @@
 TESTFILE="*"
 SIM="*"
 PYENV_VERSION="3.8.2"
+PYTHON="$(HOME)/.pyenv/versions/game-${PYENV_VERSION}/bin/python"
+PIP="$(HOME)/.pyenv/versions/game-${PYENV_VERSION}/bin/pip3"
 
 install:
 	@./install.sh $(PYENV_VERSION);
 
 build:
-	@pyenv local game-${PYENV_VERSION}; \
-		pip install --upgrade pip; \
-		pip install -e ./game;
+	@set -eux;
+		$(PIP) install --upgrade pip; \
+		$(PIP) install -e ./game;
 
 test:
 	@nosetests --verbose ./game/tests/`echo $(TESTFILE)`;
 
 run-sims: build
-	python ./simulations/run_sims.py $(SIM)
+	$(PYTHON) ./simulations/run_sims.py $(SIM)
