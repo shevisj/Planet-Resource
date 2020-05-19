@@ -1,21 +1,41 @@
-.PHONY: activate, deactivate, install, test, run-sims
+.PHONY: build, test, run-sims
 
-TESTFILE="*"
-SIM="*"
-PYENV_VERSION="3.8.2"
-PYTHON="$(HOME)/.pyenv/versions/game-${PYENV_VERSION}/bin/python"
-PIP="$(HOME)/.pyenv/versions/game-${PYENV_VERSION}/bin/pip3"
-
-install:
-	@./install.sh $(PYENV_VERSION);
+IMAGE_NAME ?= 'planet_resource'
+BUILD_ID ?= 'local'
+BUILD_TAG ?= '$(IMAGE_NAME):$(BUILD_ID)'
+DEV_TAG ?= 'dev/$(BUILD_TAG)'
+TEST_TAG ?= 'test/$(BUILD_TAG)'
+SIM_TAG ?= 'sim/$(BUILD_TAG)'
+TEST_FILE ?= '*'
+SIM_FILE ?= '*'
 
 build:
 	@set -eux;
-		$(PIP) install --upgrade pip; \
-		$(PIP) install -e ./game;
+		docker build --target=build --tag=$(BUILD_TAG) \
+		--file="./Dockerfile" .
 
-test:
-	@nosetests --verbose ./game/tests/`echo $(TESTFILE)`;
+dev-build:
+	@set -eux;
+		docker build --target=dev --tag=$(DEV_TAG) \
+		--file="./Dockerfile" .
 
-run-sims: build
-	$(PYTHON) ./simulations/run_sims.py $(SIM)
+test-build:
+	@set -eux;
+		docker build --target=test --tag=$(TEST_TAG) \
+		--file="./Dockerfile" .
+
+sim-build:
+	@set -eux;
+		docker build --target=sim --tag=$(SIM_TAG) \
+		--build-arg SIM_FILE=$(SIM_FILE) \
+		--file="./Dockerfile" .
+
+dev: dev-build
+	@docker run -it --rm $(DEV_TAG);
+
+test: test-build
+	@docker run --rm $(TEST_TAG);
+
+sim: sim-build
+	@docker run --rm $(SIM_TAG);
+
