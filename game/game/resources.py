@@ -1,5 +1,10 @@
 from .core import Resource
 
+class Money(Resource):
+    symbol='$'
+    def __init__(self):
+        super().__init__()
+
 class Continuum(Resource):
     symbol='C'
     def __init__(self):

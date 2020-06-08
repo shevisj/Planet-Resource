@@ -2,10 +2,15 @@ FROM python:3.8.2 AS build
 
 WORKDIR /usr/src/app/
 
+COPY ./requirements.txt ./requirements.txt
+
+RUN set -eux; \
+    pip install -r ./requirements.txt
+
 COPY . .
 
 RUN set -eux; \
-    pip install ./game
+    pip install -e ./game
 
 ###
 

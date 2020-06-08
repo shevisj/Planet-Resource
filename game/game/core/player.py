@@ -1,8 +1,11 @@
 from collections import Counter
 from typing import Type
+from pprint import pprint
 
-from .core import GameObject, Unit, Hex
-from .resources import Continuum, Food, Gorgonium, Iron, Lithium
+from .board import Hex
+from .game_object import GameObject
+from .unit import Unit
+
 
 class Player(GameObject):
     def __init__(self,
@@ -19,14 +22,7 @@ class Player(GameObject):
         self.board = board
         self.units = units
         self.victory_points = victory_points
-        self.resources = Counter({
-            Continuum: 0,
-            Food: 0,
-            Gorgonium: 0,
-            Iron: 0,
-            Lithium: 0,
-        })
-        self.resources += Counter(resources)
+        self.resources = Counter(resources)
         self.name = name or str(faction)
 
     def __str__(self):
@@ -56,3 +52,8 @@ class Player(GameObject):
     def gather_resources(self):
         for u in self.units.values():
             self.resources += u.gather_resource()
+
+    def display_resource_count(self):
+        if len(self.resources) == 0: return print("empty")
+        for k, v in dict(self.resources).items():
+            print(k.__name__.ljust(10), v)

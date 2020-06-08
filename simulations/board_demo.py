@@ -1,5 +1,3 @@
-from pprint import pprint
-
 from game import GameState
 from game.units import Worker, Combat, Hero
 
@@ -24,9 +22,9 @@ def board_demo():
 
 
     print("\nPlayer Resource Count BEFORE Gathering")
-    pprint(zidaan_player.resources)
+    zidaan_player.display_resource_count()
 
     print("\nPlayer Resource Count AFTER Gathering")
     zidaan_player.gather_resources()
-    pprint(zidaan_player.resources)
+    zidaan_player.display_resource_count()
     print("")

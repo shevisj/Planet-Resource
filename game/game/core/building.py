@@ -1,6 +1,5 @@
 from .game_object import GameObject
 
-class Resource(GameObject):
-    symbol = 'R'
+class Building(GameObject):
     def __init__(self):
         super().__init__()

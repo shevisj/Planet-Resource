@@ -12,7 +12,7 @@ from .resource import Resource
 from .planet import Planet
 
 
-BOARD_DISPLAY = """
+BOARD_DISPLAY = '''
      / \ / \ 
     | {} | {} |
    / \ / \ / \ 
@@ -24,9 +24,9 @@ BOARD_DISPLAY = """
    \ / \ / \ / 
     | {} | {} |
      \ / \ / 
-"""
+'''
 
-BOARD_DISPLAY_WIDE = """
+BOARD_DISPLAY_WIDE = '''
           /   \   /   \ 
         |   {}   |   {}   |
       /   \   /   \   /   \ 
@@ -38,7 +38,7 @@ BOARD_DISPLAY_WIDE = """
       \   /   \   /   \   / 
         |   {}   |   {}   |
           \   /   \   / 
-"""
+'''
 
 DEFAULT_RESOURCE_ALLOCATION = array([Resource]*14)
 

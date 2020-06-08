@@ -25,23 +25,23 @@ HERO_PRODUCTION = 1
 """
            / \     / \ 
          /     \ /     \ 
-        |   1   |   2   |
+        |   0   |   1   |
         |       |       |
        / \     / \     / \ 
      /     \ /     \ /     \ 
-    |   1   |   2   |   3   |
+    |   2   |   3   |   4   |
     |       |       |       |
    / \     / \     / \     / \ 
  /     \ /     \ /     \ /     \ 
-|   4   |   5   |   6   |   7   |
+|   5   |   6   |   7   |   8   |
 |       |       |       |       |
  \     / \     / \     / \     /
    \ /     \ /     \ /     \ /
-    |   8   |   9   |  10   |
+    |   9   |   10   |  11   |
     |       |       |       |
      \     / \     / \     /
        \ /     \ /     \ /
-        |  11   |  12   |
+        |  12   |  13   |
         |       |       |
          \     / \     / 
            \ /     \ /
@@ -50,21 +50,22 @@ HERO_PRODUCTION = 1
 ZIDAAN_INITIAL_POSITION = -1 #  set to -1 for random initial position
 ZIDAAN_ORBITAL_RATE = 1
 ZIDAAN_RESOURCE_ALLOCATION = list({
-    1: Continuum,
-    2: Food,
-    3: Gorgonium,
-    4: Iron,
-    5: Lithium,
-    6: Iron,
-    7: Continuum,
-    8: Gorgonium,
-    9: Lithium,
-    10: Food,
-    11: Iron,
-    12: Food,
-    13: Gorgonium,
-    14: Lithium,
+    0: Continuum,
+    1: Food,
+    2: Gorgonium,
+    3: Iron,
+    4: Lithium,
+    5: Iron,
+    6: Continuum,
+    7: Gorgonium,
+    8: Lithium,
+    9: Food,
+    10: Iron,
+    11: Food,
+    12: Gorgonium,
+    13: Lithium,
 }.values())
+ZIDAAN_SPACE_PORT_LOCATION=10
 
 # --------------    Hianth    --------------
 HIANTH_INITIAL_POSITION = -1 #  set to -1 for random initial position

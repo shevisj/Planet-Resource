@@ -1,8 +1,7 @@
 # This represents the highest level abstraction of this program.
-from .core import GameObject, Planet, SolarSystem
+from .core import GameObject, Planet, Player, SolarSystem
 from .config import SOLAR_SYSTEM_SIZE
 from .factions import FACTION_LIST
-from .player import Player
 
 class GameState(GameObject):
     def __init__(self, n_players=5):

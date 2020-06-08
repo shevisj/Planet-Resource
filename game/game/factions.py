@@ -1,11 +1,11 @@
 from random import choice
 
-from .core import Board, Faction, GameObject, Planet, SolarSystem
+from .core import Board, Faction, GameObject, Planet, Player, SolarSystem
 from .config import *
 
 
 class Zidaan(Faction):
-    def __init__(self, player, solar_system: SolarSystem, initial_position=ZIDAAN_INITIAL_POSITION):
+    def __init__(self, player: Player, solar_system: SolarSystem, initial_position=ZIDAAN_INITIAL_POSITION):
         if initial_position < 0:
             initial_position = choice(range(solar_system.size))
         planet_args = {
@@ -21,7 +21,7 @@ class Zidaan(Faction):
 
 
 class Hianth(Faction):
-    def __init__(self, player, solar_system: SolarSystem, initial_position=HIANTH_INITIAL_POSITION):
+    def __init__(self, player: Player, solar_system: SolarSystem, initial_position=HIANTH_INITIAL_POSITION):
         if initial_position < 0:
             initial_position = choice(range(solar_system.size))
         planet_args = {
@@ -37,7 +37,7 @@ class Hianth(Faction):
 
 
 class Gorgon(Faction):
-    def __init__(self, player, solar_system: SolarSystem, initial_position=GORGON_INITIAL_POSITION):
+    def __init__(self, player: Player, solar_system: SolarSystem, initial_position=GORGON_INITIAL_POSITION):
         if initial_position < 0:
             initial_position = choice(range(solar_system.size))
         planet_args = {
@@ -53,7 +53,7 @@ class Gorgon(Faction):
 
 
 class Frent(Faction):
-    def __init__(self, player, solar_system: SolarSystem, initial_position=FRENT_INITIAL_POSITION):
+    def __init__(self, player: Player, solar_system: SolarSystem, initial_position=FRENT_INITIAL_POSITION):
         if initial_position < 0:
             initial_position = choice(range(solar_system.size))
         planet_args = {
@@ -69,7 +69,7 @@ class Frent(Faction):
 
 
 class Lithix(Faction):
-    def __init__(self, player, solar_system: SolarSystem, initial_position=LITHIX_INITIAL_POSITION):
+    def __init__(self, player: Player, solar_system: SolarSystem, initial_position=LITHIX_INITIAL_POSITION):
         if initial_position < 0:
             initial_position = choice(range(solar_system.size))
         planet_args = {
