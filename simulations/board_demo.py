@@ -14,7 +14,7 @@ def board_demo():
 
     print("\n=============== BOARD DEMO ===============")
     print("\nZidaan Resource Layout")
-    zidaan_player.board.display('resources')
+    zidaan_player.board.display('board')
 
 
     print("\nZidaan Unit Layout")

@@ -69,7 +69,7 @@ ZIDAAN_SPACE_PORT_LOCATION=10
 
 # --------------    Hianth    --------------
 HIANTH_INITIAL_POSITION = -1 #  set to -1 for random initial position
-HIANTH_ORBITAL_RATE = 1
+HIANTH_ORBITAL_RATE = 2
 HIANTH_RESOURCE_ALLOCATION = list({
     1: Continuum,
     2: Food,
@@ -89,7 +89,7 @@ HIANTH_RESOURCE_ALLOCATION = list({
 
 # --------------    Gorgon    --------------
 GORGON_INITIAL_POSITION = -1 #  set to -1 for random initial position
-GORGON_ORBITAL_RATE = 1
+GORGON_ORBITAL_RATE = 3
 GORGON_RESOURCE_ALLOCATION = list({
     1: Continuum,
     2: Food,
@@ -109,7 +109,7 @@ GORGON_RESOURCE_ALLOCATION = list({
 
 # --------------    Frent    --------------
 FRENT_INITIAL_POSITION = -1 #  set to -1 for random initial position
-FRENT_ORBITAL_RATE = 1
+FRENT_ORBITAL_RATE = 4
 FRENT_RESOURCE_ALLOCATION = list({
     1: Continuum,
     2: Food,
@@ -129,7 +129,7 @@ FRENT_RESOURCE_ALLOCATION = list({
 
 # --------------    Lithix    --------------
 LITHIX_INITIAL_POSITION = -1 #  set to -1 for random initial position
-LITHIX_ORBITAL_RATE = 1
+LITHIX_ORBITAL_RATE = 5
 LITHIX_RESOURCE_ALLOCATION = list({
     1: Continuum,
     2: Food,

@@ -7,6 +7,7 @@ from pprint import pformat
 from collections import Counter
 
 from .game_object import GameObject
+from .building import Building
 from .coordinates import Axial, Cube
 from .resource import Resource
 from .planet import Planet
@@ -70,22 +71,26 @@ CUBE_TO_LINEAR_MAP = deepcopy(BLANK_CUBE_BOARD)
 for i, c in enumerate(LINEAR_TO_CUBE_MAP):
     CUBE_TO_LINEAR_MAP[c.x][c.y][c.z] = i
 
+VALID_HEX_TYPES = [
+    Building,
+    Resource,
+]
 
 class Hex(GameObject):
-    def __init__(self, board, index: int, resource_type: Type, unit_capacity=5):
+    def __init__(self, board, index: int, hex_type: Type, unit_capacity=5):
         super().__init__()
         self.board = board
         self.index = index
-        if not issubclass(resource_type, Resource):
-            raise Exception(f"Invalid resource type: {resource_type}")
-        self.resource_type = resource_type
+        if not any([issubclass(hex_type, r) for r in VALID_HEX_TYPES]):
+            raise Exception(f"Invalid hex type: {hex_type}")
+        self.hex_type = hex_type
         self.axial = LINEAR_TO_AXIAL_MAP[index]
         self.cube = LINEAR_TO_CUBE_MAP[index]
         self.units = {}
         self.unit_capacity = unit_capacity
 
     def produce_resource(self, n=1) -> Counter:
-        return Counter({self.resource_type: n})
+        return Counter({self.hex_type: n})
 
     def add_unit(self, unit) -> bool:
         if len(self.units) >= self.unit_capacity:
@@ -124,11 +129,11 @@ class Board(GameObject):
             return False
         return self.add_unit(unit, destination)
 
-    def display(self, mode='resources', as_str=False):
+    def display(self, mode='board', as_str=False):
         values = []
         for i in self.state:
-            if mode == 'resources':
-                values.append(i.resource_type.symbol)
+            if mode == 'board':
+                values.append(i.hex_type.symbol)
             elif mode == 'units':
                 values.append(list(i.units.values())[0].symbol if len(i.units) > 0 else ' ')
             else:

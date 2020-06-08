@@ -10,6 +10,6 @@ setup(
     ],
     extras_require={
         'rendering': ['pygame>=1.9.6'],
-        'test': ['pytest>=5.4.2'],
+        'test': ['pytest>=5.4.3'],
     }
 )
